@@ -76,3 +76,116 @@ function mouseOut() {
 function onInput(el) {
     console.log(el.value);
 }
+
+
+
+// управление элементами и обработка форм
+
+// let pText = document.getElementById('p__text');
+// pText.title = 'New__p__title';
+// console.log(pText.title); // обращение к атрибутам
+// pText.style.color = '#FF0000';
+// pText.style.backgroundColor = 'black';
+// pText.innerHTML = 'New <br> text';
+
+// let spans = document.getElementsByTagName('span');
+
+// for (let i = 0; i < spans.length; i++) {
+//     console.log(spans[i].innerHTML);
+// }
+
+
+// document.getElementById('form').addEventListener('submit', checkForm); // вешаем обработчик событий, чтобы в HTML не было Js-кода
+
+// function checkForm(event) {
+//     event.preventDefault();
+
+//     let el = document.getElementById('form');
+
+//     let name = el.name.value,
+//         pass = el.pass.value,
+//         repass = el.repass.value,
+//         state = el.state.value,
+//         submit = el.submit.value;
+
+//     let fail = '';
+
+//     if (name == '' || pass == '' || repass == '' || state == '') {
+//         fail = 'Заполните все поля!';
+//     } else if (name.length <= 1 || name.length > 50) {
+//         fail = 'Введите корректное имя';
+//     } else if (pass != repass) {
+//         fail = 'Пароли не совпадают!';
+//     }
+
+//     if (fail != '') {
+//         document.getElementById('fail').innerHTML = fail;
+//     } else {
+
+//         alert('Все данные заполнены корректно!');
+//         // window.location = 'https://estecore.ru'; можно перенаправлять пользователя
+//         // return false; но нужно вернуть false
+//     }
+
+//     // return false; // чтобы страница не перезагружалась во время любой отправки формы
+     
+// }
+
+
+
+// таймеры и интервалы 
+
+let id = setInterval(my__func, 1000);
+
+let counter = 0;
+function my__func() {
+    counter++;
+
+    console.log(counter);
+
+    if (counter == 5) {
+        clearInterval(id); // останавливает определённый интервал
+    }
+}
+
+// setInterval(function(){
+//     // console.log('interval')
+// }, 1000)
+
+setTimeout(function() {
+    console.log('timer');
+}, 5100);
+
+
+
+// создание классов и объектов
+
+let date = new Date();
+
+console.log(date.getFullYear());
+console.log(date.getMonth() + 1);
+
+let arr = [39, 4, 1, 2, 0, 3, 4, -49, 5];
+console.log(arr.join(', '));
+console.log(arr.sort());
+console.log(arr.reverse().join(' | '));
+
+let stroka = arr.join(' | ');
+console.log(stroka.split(' | '));
+
+class Person {
+
+    constructor(name, age, happinies) {
+        this.name = name;
+        this.age = age;
+        this.happinies = happinies;
+    }
+
+    info() {
+        console.log('Человек: ' + this.name + '. Возраст: ' + this.age + '. Счастливый? ' + this.happinies);
+    }
+}
+
+let imya = new Person('Imya', '5', 'yes');
+console.log(imya);
+imya.info();
