@@ -1,3 +1,5 @@
+/*
+
 // вывод информации
 
 document.write('Hello World! document.write()'); // устаревший метод?
@@ -42,12 +44,10 @@ switch(stroke1) {
 
 // всплывающие окна (невозможно задать стили)
 
-/* 
 alert('метод alert'); // в комментарий, чтоб не бесил
 let data = confirm('метод confirm'); // в комментарий, чтоб не бесил
 console.log(data); // можно определить, что нажал пользователь
 prompt('Введите что-то', 'То, что будет введено по умолчанию') // окно с полем ввода
-*/
 
 
 
@@ -189,3 +189,64 @@ class Person {
 let imya = new Person('Imya', '5', 'yes');
 console.log(imya);
 imya.info();
+
+*/
+
+
+
+// calculator
+
+const resultElement = document.getElementById('result');
+const input1 = document.getElementById('input1');
+const input2 = document.getElementById('input2');
+const submitBtn = document.getElementById('submit');
+const plusBtn = document.getElementById('plus');
+const minusBtn = document.getElementById('minus');
+let action = '+';
+
+// console.log(resultElement.textContent);  // textContent
+
+plusBtn.onclick = function () {
+    action = '+' 
+}
+minusBtn.onclick = function () {
+    action = '-'
+}
+
+function printResult(res) {
+    if (res < 0) {
+        resultElement.style.color = 'red';
+    } else {
+        resultElement.style.color = 'green';
+    }
+    
+    resultElement.textContent = res;
+}
+
+function computeNumbersWithAction(inp1, inp2, actionSymbol) {
+    const num1 = Number(inp1.value);
+    const num2 = Number(inp2.value);
+
+    // if (actionSymbol == '+') {
+    //     return num1 + num2;
+    // } else {
+    //     return num1 - num2;
+    // }
+
+    return actionSymbol == '+' ? num1 + num2 : num1 - num2;
+}
+
+submitBtn.onclick = function() {
+
+    const result = computeNumbersWithAction(input1, input2, action);
+    printResult(result);
+
+    // if (action == '+') {
+    //     const sum = Number(input1.value) + Number(input2.value);
+    //     printResult(sum);
+    // } else {
+    //     const sum = Number(input1.value) - Number(input2.value);
+    //     printResult(sum);
+    // }
+    
+}
