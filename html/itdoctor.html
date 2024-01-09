@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JS Learn ITDoctor</title>
+
+</head>
+
+<body>
+
+    <script>
+
+        let words = [
+            'прекрасный',
+            'оладушек',
+            'динозавр',
+            'слово',
+            'угадайка'
+        ]; // слова
+
+        let word = words[Math.floor(Math.random() * words.length)]; // случайное слово
+
+        let answerArray = []; // массив с ответом
+        for (let i = 0; i < word.length; i++) {
+            answerArray[i] = '_';
+        }
+
+        let remainingLetters = word.length; // сколько букв осталось отгадать 
+
+        while (remainingLetters > 0) {
+            alert(answerArray.join(' '));
+
+            let guess = prompt('Угадайте букву или нажмите "Отменна" для выхода из игры'); // предполагаемая буква
+
+            if (guess === null) { // если нажата отмена
+                break;
+            } else if (guess.length !== 1) { // если введно более одной буквы
+                alert('Пожалуйста, введите только одну букву!');
+            } else {
+                for (let j = 0; j < word.length; j++) {
+                    if (word[j] === guess) { // сверяем буквы слова с введённой
+                        answerArray[j] = guess; // присваем ответу букву
+                        remainingLetters--; // уменьшаем количество оставшихся букв
+                    }
+                }
+            }
+        }
+
+        if (remainingLetters === 0) {
+            alert(`Отлично! Вы угадали слово '${word}'`);
+        } else {
+            alert(`Загадонным словом было '${word}'`);
+        }
+
+    </script>
+    
+</body>
+
+</html>
